@@ -4,14 +4,14 @@ import AuthPresenter from "./AuthPresenter";
 import { useMutation } from "react-apollo-hooks";
 import { toast } from "react-toastify";
 
-import { LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
+import { LOG_IN, CREATE_ACCOUNT, CONFIRM_SECRET } from "./AuthQueries";
 
 export default () => {
   const [action, setAction] = useState("logIn");
   const userName = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
-  const email = useInput("");
+  const email = useInput("jinaganda5@gmail.com");
   const secret = useInput("");
   const [requestSecretMutaion] = useMutation(LOG_IN, {
     variables: { email: email.value }
@@ -21,6 +21,13 @@ export default () => {
       userName: userName.value,
       firstName: firstName.value,
       lastName: lastName.value,
+      email: email.value
+    }
+  });
+
+  const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
+    variables: {
+      secret: secret.value,
       email: email.value
     }
   });
@@ -68,6 +75,17 @@ export default () => {
         }
       } else {
         toast.error("All field is required");
+      }
+    } else if (action === "confirm") {
+      if (secret.value !== "") {
+        try {
+          const {
+            data: { confirmSecret: token }
+          } = await confirmSecretMutation();
+          console.log(token);
+        } catch {
+          toast.error("Can't confirm secret");
+        }
       }
     }
   };
