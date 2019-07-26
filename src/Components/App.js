@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Theme from "../Styles/Theme";
-import Routes from "./Router";
+import Routes from "./Routes";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -20,7 +20,7 @@ const QUERY = gql`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: ${props => props.theme.maxWidth}
+  max-width: ${props => props.theme.maxWidth};
   width: 100%;
 `;
 
