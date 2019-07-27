@@ -21,6 +21,7 @@ const HeaderField = styled.header`
   justify-content: center;
   align-items: center;
   padding: 25px 0;
+  z-index: 2;
 `;
 
 const HeaderWrapper = styled.div`

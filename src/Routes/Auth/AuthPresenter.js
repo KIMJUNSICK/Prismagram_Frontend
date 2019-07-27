@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 
@@ -60,19 +61,29 @@ export default ({
   <Wrapper>
     <Form>
       {action === "logIn" && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder={"Email"} {...email} type="email" />
-          <Button text={"Log In"} />
-        </form>
+        <>
+          <Helmet>
+            <title>Log In | Prisamgram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Email"} {...email} type="email" />
+            <Button text={"Log In"} />
+          </form>
+        </>
       )}
       {action === "signUp" && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder={"Username"} {...userName} />
-          <Input placeholder={"First name"} {...firstName} />
-          <Input placeholder={"Last name"} {...lastName} />
-          <Input placeholder={"Email"} {...email} type="email" />
-          <Button text={"Sign Up"} />
-        </form>
+        <>
+          <Helmet>
+            <title>Sign Up | Prisamgram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Username"} {...userName} />
+            <Input placeholder={"First name"} {...firstName} />
+            <Input placeholder={"Last name"} {...lastName} />
+            <Input placeholder={"Email"} {...email} type="email" />
+            <Button text={"Sign Up"} />
+          </form>
+        </>
       )}
       {action === "confirm" && (
         <form onSubmit={onSubmit}>
@@ -82,19 +93,24 @@ export default ({
       )}
     </Form>
     {action !== "confirm" && (
-      <StateChanger>
-        {action === "logIn" ? (
-          <>
-            Don't have an account?{" "}
-            <Link onClick={() => setAction("signUp")}>Sign up</Link>
-          </>
-        ) : (
-          <>
-            Have an account?{" "}
-            <Link onClick={() => setAction("logIn")}>Log in</Link>
-          </>
-        )}
-      </StateChanger>
+      <>
+        <Helmet>
+          <title>Confirm Secret | Prisamgram</title>
+        </Helmet>
+        <StateChanger>
+          {action === "logIn" ? (
+            <>
+              Don't have an account?{" "}
+              <Link onClick={() => setAction("signUp")}>Sign up</Link>
+            </>
+          ) : (
+            <>
+              Have an account?{" "}
+              <Link onClick={() => setAction("logIn")}>Log in</Link>
+            </>
+          )}
+        </StateChanger>
+      </>
     )}
   </Wrapper>
 );
