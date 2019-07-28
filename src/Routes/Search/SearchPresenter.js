@@ -5,7 +5,14 @@ import FatText from "../../Components/FatText";
 import Loader from "../../Components/Loader";
 import UserCard from "../../Components/UserCard";
 
-const Section = styled.div``;
+const Section = styled.div`
+  margin-bottom: 50px;
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 160px;
+  grid-auto-rows: 160px;
+`;
 
 const Wrapper = styled.div`
   height: 50vh;
@@ -55,30 +62,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
 
 SearchPresenter.propTypes = {
   searchTerm: PropTypes.string,
-  loading: PropTypes.bool,
-  data: PropTypes.objectOf({
-    searchUser: PropTypes.arrayOf(
-      PropTypes.shape({
-        avatar: PropTypes.string,
-        id: PropTypes.string.isRequired,
-        isFollowing: PropTypes.bool.isRequired,
-        isSelf: PropTypes.bool.isRequired,
-        userName: PropTypes.string.isRequired
-      })
-    ),
-    searchPost: PropTypes.arrayOf(
-      PropTypes.shape({
-        files: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired
-          })
-        ),
-        likeCount: PropTypes.number.isRequired,
-        commentCount: PropTypes.number.isRequired
-      })
-    )
-  })
+  loading: PropTypes.bool
 };
 
 export default SearchPresenter;

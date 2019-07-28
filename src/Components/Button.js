@@ -12,6 +12,7 @@ const Container = styled.button`
   background-color: ${props => props.theme.blueColor};
   text-align: center;
   padding: 7px 0px;
+  cursor: pointer;
 `;
 
 const Button = ({ text }) => <Container>{text}</Container>;
