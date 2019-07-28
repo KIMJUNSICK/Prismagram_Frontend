@@ -11,6 +11,6 @@ export default withRouter(({ location: { search } }) => {
     skip: term === undefined,
     variables: { term }
   });
-
+  console.log(data);
   return <SearchPresenter searchTerm={term} loading={loading} data={data} />;
 });
