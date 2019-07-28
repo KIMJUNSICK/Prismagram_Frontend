@@ -66,7 +66,12 @@ export default ({
             <title>Log In | Prisamgram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder={"Email"} {...email} type="email" />
+            <Input
+              placeholder={"Email"}
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
             <Button text={"Log In"} />
           </form>
         </>
@@ -77,17 +82,39 @@ export default ({
             <title>Sign Up | Prisamgram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder={"Username"} {...userName} />
-            <Input placeholder={"First name"} {...firstName} />
-            <Input placeholder={"Last name"} {...lastName} />
-            <Input placeholder={"Email"} {...email} type="email" />
+            <Input
+              placeholder={"Username"}
+              value={userName.value}
+              onChange={userName.onChange}
+            />
+            <Input
+              placeholder={"First name"}
+              value={firstName.value}
+              onChange={firstName.onChange}
+            />
+            <Input
+              placeholder={"Last name"}
+              value={lastName.value}
+              onChange={lastName.onChange}
+            />
+            <Input
+              placeholder={"Email"}
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
             <Button text={"Sign Up"} />
           </form>
         </>
       )}
       {action === "confirm" && (
         <form onSubmit={onSubmit}>
-          <Input placeholder="Paste your secret" required {...secret} />
+          <Input
+            placeholder="Paste your secret"
+            required
+            value={secret.value}
+            onChange={secret.onChange}
+          />
           <Button text={"Confirm"} />
         </form>
       )}

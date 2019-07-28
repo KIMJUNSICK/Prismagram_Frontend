@@ -158,7 +158,6 @@ export default ({
       ))}
       <Timestamp>{createdAt}</Timestamp>
       <Textarea
-        required="true"
         placeholder="Add a comment..."
         value={newComment.value}
         onChange={newComment.onChange}

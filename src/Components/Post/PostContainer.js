@@ -60,9 +60,7 @@ const PostContainer = ({
         const {
           data: { addComment }
         } = await addCommentMutaion();
-        if (addComment.text !== "") {
-          setSelfComments([...selfComments, addComment]);
-        }
+        setSelfComments([...selfComments, addComment]);
         comment.setValue("");
       } catch {
         toast.error("Can't send your Comment");
