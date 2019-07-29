@@ -4,6 +4,7 @@ import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
 import { HeartFull, HeartEmpty, Comment as CommentIcon } from "../Icons";
+import { Link } from "react-router-dom";
 
 const Post = styled.div`
   ${props => props.theme.whiteBox}
@@ -100,9 +101,22 @@ const Comment = styled.li`
   }
 `;
 
+const ELink = styled(Link)`
+  color: inherit;
+`;
+
+const Caption = styled.div`
+  margin: 15px 0px;
+`;
+
+const CaptionText = styled.span`
+  margin-left: 5px;
+`;
+
 export default ({
   user: { userName, avatar },
   location,
+  caption,
   files,
   isLiked,
   likeCount,
@@ -118,7 +132,9 @@ export default ({
     <Header>
       <Avatar size="sm" url={avatar} />
       <UserColumn>
-        <FatText text={userName} />
+        <ELink to={`/${userName}`}>
+          <FatText text={userName} />
+        </ELink>
         <Location>{location}</Location>
       </UserColumn>
     </Header>
@@ -138,6 +154,12 @@ export default ({
         </Button>
       </Buttons>
       <FatText text={likeCount === 1 ? "1 like" : `${likeCount} likes`} />
+      {caption && (
+        <Caption>
+          <FatText text={userName} />
+          <CaptionText>{caption}</CaptionText>
+        </Caption>
+      )}
       {comments && (
         <Comments>
           {comments.map(comment => (

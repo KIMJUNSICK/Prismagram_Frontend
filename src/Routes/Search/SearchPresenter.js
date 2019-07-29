@@ -22,7 +22,7 @@ const PostSection = styled(Section)`
 `;
 
 const Wrapper = styled.div`
-  height: 50vh;
+  min-height: 60vh;
 `;
 
 const SearchPresenter = ({ searchTerm, loading, data }) => {

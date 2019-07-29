@@ -118,4 +118,5 @@ PostContainer.propTypes = {
   location: PropTypes.string,
   caption: PropTypes.string.isRequired
 };
+
 export default PostContainer;
