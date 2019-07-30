@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import Loader from "../../Components/Loader";
 import Avatar from "../../Components/Avatar";
 import FatText from "../../Components/FatText";
+import Button from "../../Components/Button";
 import FollowButton from "../../Components/FollowButton";
 import SquarePost from "../../Components/SquarePost";
 
@@ -55,8 +56,8 @@ const Bio = styled.p`
   margin-top: 10px;
 `;
 
-const StyledFollowButton = styled(FollowButton)`
-  background-color: white;
+const Buttons = styled.div`
+  width: 30%;
 `;
 
 const PostSection = styled.div`
@@ -71,7 +72,7 @@ const PostSection = styled.div`
   grid-auto-rows: 300px;
 `;
 
-const ProfilePresenter = ({ data, loading }) => {
+const ProfilePresenter = ({ data, loading, logOut }) => {
   if (loading) {
     return (
       <Wrapper>
@@ -79,7 +80,6 @@ const ProfilePresenter = ({ data, loading }) => {
       </Wrapper>
     );
   } else if (!loading && data && data.seeUser) {
-    console.log(data);
     const {
       seeUser: {
         id,
@@ -107,9 +107,13 @@ const ProfilePresenter = ({ data, loading }) => {
           <HeaderColumn>
             <UserNameRow>
               <UserName>{userName}</UserName>
-              {!isSelf && (
-                <StyledFollowButton isFollowing={isFollowing} id={id} />
-              )}
+              <Buttons>
+                {isSelf ? (
+                  <Button text={"LOG OUT"} onClick={logOut} />
+                ) : (
+                  <FollowButton isFollowing={isFollowing} id={id} />
+                )}
+              </Buttons>
             </UserNameRow>
             <Counts>
               <Count>
